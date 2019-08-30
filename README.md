@@ -52,3 +52,10 @@ cnpm install stylus-loader css-loader style-loader less-loader sass-loader --sav
 cnpm install sass-loader --save
 cnpm install node-sass --save
 cnpm install less --save
+
+#7 iconfont引入
+iconfont下载文件并放到assets/iconfont中
+main.js中引入
+import './assets/iconfont/iconfont.css'
+组件中使用
+<span class="iconfont icon-icon_xinyong_xianxing_jijin-"></span>

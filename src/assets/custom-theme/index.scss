@@ -12,4 +12,10 @@ $--button-medium-padding-vertical: 8px !default;
 $--button-small-padding-vertical: 7px !default;
 $--button-mini-padding-vertical: 6px !default;
 
-@import '~element-ui/lib/theme-chalk/index.css';
+$font-size: 24px;
+$color-333: #333;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";

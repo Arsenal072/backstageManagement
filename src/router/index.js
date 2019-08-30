@@ -49,7 +49,8 @@ const whiteList = ['/login', '*']
 
 //路由钩子
 router.beforeEach((to, from, next) => {
-    // NProgress.start()
+    NProgress.start()
+    next()
     // // 已登录
     // if(Object.keys(store.getters.userInfo).length){
     //     next()
@@ -72,7 +73,7 @@ router.beforeEach((to, from, next) => {
 
 //路由钩子 --- 进入后： 回到顶部
 router.afterEach(() => {
-    // NProgress.done()
+    NProgress.done()
     window.scrollTo(0, 0)
 })
 export default router
