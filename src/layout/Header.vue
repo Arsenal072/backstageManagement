@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:55:06 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-08-30 16:42:03
+ * @Last Modified time: 2019-09-02 09:35:19
  */
 <!-- header -->
 <template>
@@ -47,8 +47,8 @@ export default {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 80px;
-        line-height: 80px;
+        height: 60px;
+        line-height: 60px;
         padding: 0 50px;
         color: #fff;
         background-color: #3A5FCD;

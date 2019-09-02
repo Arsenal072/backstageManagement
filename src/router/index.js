@@ -21,27 +21,34 @@ const router = new Router({
                   component: () => import('../views/login.vue')
                 },
                 {
-                    path: '/index',
-                    name: 'index',
+                    path: '/',
+                    name: 'home',
                     meta: {
                         title: '首页',
                         requireAuth: true
                     },
-                    component: () => import('../views/index.vue')
+                    component: () => import('../views/home.vue'),
+                    children: [
+                        {
+                            path: '/businessStatistics',
+                            name: '业务统计',
+                            meta: {
+                                title: '业务统计',
+                                requireAuth: false
+                            },
+                            component: () => import('../views/businessStatistics.vue')
+                        },
+                        {
+                            path: '*',
+                            name: '404',
+                            meta: {
+                                title: '404',
+                                requireAuth: false
+                            },
+                            component: () => import('../views/notFound.vue')
+                        }
+                    ]
                 },                
-                {
-                    path: '*',
-                    name: '404',
-                    meta: {
-                        title: '404',
-                        requireAuth: false
-                    },
-                    component: () => import('../views/notFound.vue')
-                },
-                {
-                    path: '/',
-                    redirect: '/index'
-                },
             ]
 })
 

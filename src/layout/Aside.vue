@@ -2,16 +2,21 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:56:46 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-08-30 16:29:39
+ * @Last Modified time: 2019-09-02 14:00:59
  */
 <!-- aside -->
 <template>
     <div class="aside-wrapper">
         <div class="menu-box">
-            <div v-for="(item, index) in menuList" :key="index" @click="changeMenu" class="menu-item">
-                <span :class="['iconfont',item.icon]"></span>
-                <span>{{item.name}}</span>
-            </div>
+            <el-menu :default-active="$route.path" class="el-menu-vertical-demo" router>
+                <div v-for="(item, index) in menuList" :key="index">
+                    <el-menu-item :index="item.path" class="menu-item">
+                        <span :class="['iconfont', `${item.icon}`]"></span>
+                        <span slot="title">{{item.name}}</span>
+                    </el-menu-item>
+                </div>
+            </el-menu>
+
         </div>
     </div>
 </template>
@@ -25,44 +30,20 @@ export default {
         return {
             menuList: [
                 {
-                    name: '业务统计',
-                    icon: 'icon-tongji',
-                    path: '/login'
+                    name: "业务统计",
+                    icon: "icon-tongji",
+                    path: "/businessStatistics"
                 },
                 {
-                    name: '业务统计',
-                    icon: 'icon-yonghu',
-                    path: '/login'
-                },
-                {
-                    name: '业务统计',
-                    icon: 'icon-yonghu',
-                    path: '/login'
-                },
-                {
-                    name: '业务统计',
-                    icon: 'icon-yonghu',
-                    path: '/login'
-                },
-                {
-                    name: '业务统计',
-                    icon: 'icon-yonghu',
-                    path: '/login'
-                },
-                {
-                    name: '业务统计',
-                    icon: 'icon-yonghu',
-                    path: '/login'
+                    name: "业务统计",
+                    icon: "icon-yonghu",
+                    path: "/notFound"
                 }
             ]
         };
     },
 
-    methods: {
-        changeMenu(){
-            this.$router.push('/login')
-        }
-    }
+    methods: {}
 };
 </script>
 <style lang='scss'>
@@ -70,20 +51,16 @@ export default {
     float: left;
     .menu-box {
         width: 200px;
-        height: 800px;
-        border-right: 1px solid #eee;
-        box-shadow:0 0 12px #ccc;
-        .menu-item{
+        box-shadow: 0 0 12px #ccc;
+        .menu-item {
             height: 60px;
             line-height: 60px;
             font-size: 20px;
             background-color: #fff;
-            color: #3978ff;
             border-bottom: 1px solid #ccc;
             cursor: pointer;
-            .iconfont{
+            .iconfont {
                 font-size: 20px;
-                color: #3978ff;
             }
         }
     }
