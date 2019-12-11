@@ -25,7 +25,7 @@ const router = new Router({
                     name: 'home',
                     meta: {
                         title: '首页',
-                        requireAuth: true
+                        requireAuth: false
                     },
                     component: () => import('../views/home.vue'),
                     children: [
@@ -39,23 +39,34 @@ const router = new Router({
                             component: () => import('../views/businessStatistics.vue')
                         },
                         {
-                            path: '*',
-                            name: '404',
+                            path: '/testScroll',
+                            name: 'testScroll',
                             meta: {
-                                title: '404',
+                                title: 'testScroll',
                                 requireAuth: false
                             },
-                            component: () => import('../views/notFound.vue')
+                            component: () => import('../views/testScroll.vue')
                         }
+
+                        // {
+                        //     path: '*',
+                        //     name: '404',
+                        //     meta: {
+                        //         title: '404',
+                        //         requireAuth: false
+                        //     },
+                        //     component: () => import('../views/notFound.vue')
+                        // }
                     ]
                 },                
             ]
 })
 
-const whiteList = ['/login', '*']
+// const whiteList = ['/login', '*']
 
 //路由钩子
 router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || ''
     NProgress.start()
     next()
     // // 已登录
@@ -75,7 +86,6 @@ router.beforeEach((to, from, next) => {
     // }else{
     //     next()
     // }
-    document.title = to.meta.title || ''
 })
 
 //路由钩子 --- 进入后： 回到顶部

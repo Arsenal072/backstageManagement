@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:56:46 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-09-02 14:00:59
+ * @Last Modified time: 2019-12-05 14:26:20
  */
 <!-- aside -->
 <template>
@@ -37,7 +37,7 @@ export default {
                 {
                     name: "业务统计",
                     icon: "icon-yonghu",
-                    path: "/notFound"
+                    path: "/testScroll"
                 }
             ]
         };

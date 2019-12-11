@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 14:01:23 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-09-02 13:42:48
+ * @Last Modified time: 2019-12-05 14:32:40
  */
 <!--  -->
 <template>
@@ -17,6 +17,7 @@
                     <Aside></Aside>
                 </el-aside>
                 <el-main>
+                    <div class='breadCrumb'>{{$route.meta.title}}</div>
                     <router-view/>
                 </el-main>
             </el-container>
@@ -38,11 +39,18 @@ export default {
         };
     },
 
-    methods: {}
+    methods: {},
+    created(){
+        console.log('route',this.$route)
+    }
 };
 </script>
 <style lang='scss'>
 .index-wrapper {
-
+    .breadCrumb{
+        text-align: left;
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+    }
 }
 </style>
