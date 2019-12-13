@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 14:01:23 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-11 17:09:39
+ * @Last Modified time: 2019-12-13 19:26:40
  */
 <!--  -->
 <template>
@@ -41,7 +41,7 @@ export default {
 
     methods: {},
     created(){
-        console.log('route',this.$route)
+        // console.log('route',this.$route)
     }
 };
 </script>

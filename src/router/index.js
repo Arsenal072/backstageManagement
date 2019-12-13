@@ -34,7 +34,7 @@ const router = new Router({
                             name: '业务统计',
                             meta: {
                                 title: '业务统计',
-                                requireAuth: true
+                                requireAuth: false
                             },
                             component: () => import('../views/businessStatistics.vue'),
                             children: [
@@ -63,7 +63,7 @@ const router = new Router({
                             name: 'testScroll',
                             meta: {
                                 title: 'testScroll',
-                                requireAuth: true
+                                requireAuth: false
                             },
                             component: () => import('../views/testScroll.vue')
                         },
@@ -72,7 +72,7 @@ const router = new Router({
                             name: 'tree',
                             meta: {
                                 title: 'tree',
-                                requireAuth: true
+                                requireAuth: false
                             },
                             component: () => import('../views/index.vue')
                         },
