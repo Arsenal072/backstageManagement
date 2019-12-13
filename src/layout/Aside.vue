@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:56:46 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-05 14:26:20
+ * @Last Modified time: 2019-12-12 20:07:59
  */
 <!-- aside -->
 <template>
@@ -16,7 +16,6 @@
                     </el-menu-item>
                 </div>
             </el-menu>
-
         </div>
     </div>
 </template>
@@ -35,9 +34,14 @@ export default {
                     path: "/businessStatistics"
                 },
                 {
-                    name: "业务统计",
+                    name: "testScroll",
                     icon: "icon-yonghu",
                     path: "/testScroll"
+                },
+                {
+                    name: "树",
+                    icon: "icon-yonghu",
+                    path: "/tree"
                 }
             ]
         };

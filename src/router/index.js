@@ -34,29 +34,57 @@ const router = new Router({
                             name: '业务统计',
                             meta: {
                                 title: '业务统计',
-                                requireAuth: false
+                                requireAuth: true
                             },
-                            component: () => import('../views/businessStatistics.vue')
+                            component: () => import('../views/businessStatistics.vue'),
+                            children: [
+                                {
+                                    path: '/main',
+                                    name: 'main',
+                                    meta: {
+                                        title: 'main',
+                                        requireAuth: false
+                                    },
+                                    component: () => import('../views/main.vue')
+                                },
+                                {
+                                    path: '/about',
+                                    name: 'about',
+                                    meta: {
+                                        title: 'about',
+                                        requireAuth: false
+                                    },
+                                    component: () => import('../views/about.vue')
+                                }
+                            ]
                         },
                         {
                             path: '/testScroll',
                             name: 'testScroll',
                             meta: {
                                 title: 'testScroll',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/testScroll.vue')
+                        },
+                        {
+                            path: '/tree',
+                            name: 'tree',
+                            meta: {
+                                title: 'tree',
+                                requireAuth: true
+                            },
+                            component: () => import('../views/index.vue')
+                        },
+                        {
+                            path: '/detail/:id',
+                            name: 'detail',
+                            meta: {
+                                title: 'detail',
+                                requireAuth: false
+                            },
+                            component: () => import('../views/detail.vue')
                         }
-
-                        // {
-                        //     path: '*',
-                        //     name: '404',
-                        //     meta: {
-                        //         title: '404',
-                        //         requireAuth: false
-                        //     },
-                        //     component: () => import('../views/notFound.vue')
-                        // }
                     ]
                 },                
             ]
@@ -81,11 +109,11 @@ router.beforeEach((to, from, next) => {
     //     }
     // }
 
-    // if(to.meta.requireAuth){
-    //     next('/login')
-    // }else{
-    //     next()
-    // }
+    if(to.meta.requireAuth){
+        next('/login')
+    }else{
+        next()
+    }
 })
 
 //路由钩子 --- 进入后： 回到顶部

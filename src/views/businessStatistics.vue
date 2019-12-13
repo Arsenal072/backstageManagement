@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-09-02 11:50:32 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-11 17:59:34
+ * @Last Modified time: 2019-12-13 17:02:17
  */
 <!--  -->
 <template>
@@ -21,13 +21,21 @@
         <div>
             <button @click="submit" class='submit'>提交</button>
         </div>
-
+        <my-checkbox v-model='ischecked' placeholder='请输入用户名'></my-checkbox>
         {{model}}
+        
+        <div>
+            <router-link to='/main'>main</router-link>
+            <router-link to='/about'>about</router-link>
+            <router-link to='/detail'>detail</router-link>
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script>
 import MyInput from "./input";
+import MyCheckbox from "./checkbox";
 import FormItem from "./formItem";
 import MyForm from "./form";
 export default {
@@ -35,7 +43,8 @@ export default {
     components: {
         MyInput,
         FormItem,
-        MyForm
+        MyForm,
+        MyCheckbox
     },
 
     data() {
@@ -44,6 +53,7 @@ export default {
                 username: "",
                 password: ""
             },
+            ischecked: false,
             rules: {
                 username: [{ required: true, message: "请输入用户名" }],
                 password: [{ required: true, message: "请输入密码" }]
@@ -53,10 +63,9 @@ export default {
 
     methods: {
         submit() {
-            this.$refs['form'].validate(valid=>{
-                debugger
-                alert(valid?'请求登录':'校验失败')
-            })
+            this.$refs["form"].validate(valid => {
+                alert(valid ? "请求登录" : "校验失败");
+            });
         }
     }
 };

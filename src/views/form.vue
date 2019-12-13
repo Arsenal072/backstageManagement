@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-12-11 16:04:19 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-11 17:56:28
+ * @Last Modified time: 2019-12-12 18:33:23
  */
 <!--  -->
 <template>
@@ -39,7 +39,6 @@ export default {
             Promise.all(tasks).then(()=>{
                 cb(true)
             }).catch(()=>{
-                debugger
                 cb(false)
             })
         }

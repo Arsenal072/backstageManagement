@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-12-11 13:36:18 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-11 17:51:33
+ * @Last Modified time: 2019-12-12 18:32:18
  */
 <template>
     <div>
@@ -13,44 +13,46 @@
 </template>
 
 <script>
-import Schema from 'async-validator'
+import Schema from "async-validator";
 export default {
-  inject: ["form"],
-  props: {
-    label: {
-      type: String,
-      default: ""
+    inject: ["form"],
+    props: {
+        label: {
+            type: String,
+            default: ""
+        },
+        prop: {
+            type: String
+        }
     },
-    prop: {
-      type: String
+    data() {
+        return {
+            errorMessage: ""
+        };
+    },
+    mounted() {
+        this.$on("validate", () => {
+            this.validate();
+        });
+    },
+    methods: {
+        validate() {
+            // 做校验
+            const value = this.form.model[this.prop];
+            const rules = this.form.rules[this.prop];
+            // npm i async-validator -S
+            const desc = { [this.prop]: rules };
+            const schema = new Schema(desc);
+            // return的是校验结果的Promise
+            return schema.validate({ [this.prop]: value }, errors => {
+                if (errors) {
+                    this.errorMessage = errors[0].message;
+                } else {
+                    this.errorMessage = "";
+                }
+            });
+        }
     }
-  },
-  data() {
-    return {
-      errorMessage: ""
-    };
-  },
-  mounted() {
-      this.$on('validate', this.validate)
-  },
-  methods: {
-      validate() {
-          // 做校验
-          const value = this.form.model[this.prop]
-          const rules = this.form.rules[this.prop]
-          // npm i async-validator -S
-          const desc = {[this.prop]: rules};
-          const schema = new Schema(desc);
-          // return的是校验结果的Promise
-          return schema.validate({[this.prop]: value}, errors => {
-              if (errors) {
-                  this.errorMessage = errors[0].message;
-              }else {
-                  this.errorMessage = ''
-              }
-          })
-      }
-  },
 };
 </script>
 <style lang='scss' scoped>
