@@ -2,13 +2,13 @@
  * @Author: CGQ 
  * @Date: 2019-12-11 13:36:18 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-12 18:32:18
+ * @Last Modified time: 2019-12-17 17:31:50
  */
 <template>
     <div>
         <label v-if='label'>{{label}}</label>
         <slot></slot>
-        <p v-if='errorMessage'>{{errorMessage}}</p>
+        <p v-if='errorMessage' class='error-msg'>{{errorMessage}}</p>
     </div>
 </template>
 
@@ -56,4 +56,9 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.error-msg{
+    padding-top: 10px;
+    font-size: 18px;
+    color: red;
+}
 </style>

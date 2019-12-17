@@ -34,7 +34,7 @@ const router = new Router({
                             name: '业务统计',
                             meta: {
                                 title: '业务统计',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/businessStatistics.vue'),
                             children: [
@@ -43,7 +43,7 @@ const router = new Router({
                                     name: 'main',
                                     meta: {
                                         title: 'main',
-                                        requireAuth: false
+                                        requireAuth: true
                                     },
                                     component: () => import('../views/main.vue')
                                 },
@@ -52,7 +52,7 @@ const router = new Router({
                                     name: 'about',
                                     meta: {
                                         title: 'about',
-                                        requireAuth: false
+                                        requireAuth: true
                                     },
                                     component: () => import('../views/about.vue')
                                 }
@@ -63,7 +63,7 @@ const router = new Router({
                             name: 'testScroll',
                             meta: {
                                 title: 'testScroll',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/testScroll.vue')
                         },
@@ -72,7 +72,7 @@ const router = new Router({
                             name: 'tree',
                             meta: {
                                 title: 'tree',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/index.vue')
                         },
@@ -81,7 +81,7 @@ const router = new Router({
                             name: 'detail',
                             meta: {
                                 title: 'detail',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/detail.vue')
                         }
@@ -96,7 +96,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title || ''
     NProgress.start()
-    next()
+    // next()
     // // 已登录
     // if(Object.keys(store.getters.userInfo).length){
     //     next()
@@ -108,8 +108,8 @@ router.beforeEach((to, from, next) => {
     //         next(`/login?redirect=${to.path}`)
     //     }
     // }
-
-    if(to.meta.requireAuth){
+    console.log('store.getters',store.getters['user/isLogined'])
+    if(to.meta.requireAuth&&!store.getters['user/isLogined']){
         next('/login')
     }else{
         next()

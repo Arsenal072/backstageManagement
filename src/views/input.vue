@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-12-11 13:29:20 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-13 16:30:29
+ * @Last Modified time: 2019-12-17 17:35:19
  */
 <!--  -->
 <template>
@@ -28,7 +28,6 @@ export default {
 
     methods: {
         oninput(event) {
-            alert('hhahahah')
             this.$emit("input", event.target.value);
             this.$parent.$emit('validate')
         }
