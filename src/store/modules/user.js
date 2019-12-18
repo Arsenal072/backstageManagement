@@ -7,9 +7,9 @@ const state = {
 
 // getters
 const getters = {
-  isLogined() {
-    return sessionStorage.getItem('userInfo')&&Object.keys(sessionStorage.getItem('userInfo')).length ? true : false
-  }
+    showMsg(){
+        return '哈哈哈哈'
+    }
 }
 
 // actions
@@ -18,13 +18,9 @@ const actions = {
     dispatch,
     commit
   }, payload) {
-    commit('setUserInfo', payload);
-    dispatch('addCount')
+    commit('setUserInfo', payload)
     // const data = await queryUserInfo();
     // commit('setUserInfo', data.data);
-  },
-  addCount({commit}) {
-    commit('setCount')
   },
   quit({commit}){
       commit('quit')
@@ -34,17 +30,17 @@ const actions = {
 // mutations
 const mutations = {
   setUserInfo(state, userInfo) {
-    sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
-    state.userInfo = JSON.parse(sessionStorage.getItem('userInfo'))
+    state.userInfo = userInfo
   },
-  setCount(state) {
-    sessionStorage.setItem('count', ++state.count)
-    state.count = sessionStorage.getItem('count')
+  setCount(state, count) {
+    state.count = count||++state.count
+    sessionStorage.setItem('count', state.count)
   },
   quit(state){
     state.userInfo = {}
     state.count = 0
     sessionStorage.removeItem('userInfo')
+    sessionStorage.removeItem('isLogin')
     sessionStorage.removeItem('count')
   }
 }

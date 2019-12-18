@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 13:59:53 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-17 18:23:55
+ * @Last Modified time: 2019-12-18 14:06:00
  */
 <!--  -->
 <template>
@@ -16,7 +16,7 @@
                     <my-input v-model='model.password' placeholder='请输入密码'></my-input>
                 </form-item>
             </my-form>
-            <my-checkbox v-model='ischecked' placeholder='请输入用户名'></my-checkbox>
+            <!-- <my-checkbox v-model='ischecked' placeholder='请输入用户名'></my-checkbox> -->
             <el-button @click="submit" class='submit' type='primary'>提交</el-button>
         </div>
     </div>
@@ -26,14 +26,14 @@
 import MyInput from "./input";
 import FormItem from "./formItem";
 import MyForm from "./form";
-import MyCheckbox from "./checkbox";
+// import MyCheckbox from "./checkbox";
 export default {
     name: "Login",
     components: {
         MyInput,
         FormItem,
         MyForm,
-        MyCheckbox
+        // MyCheckbox
     },
 
     data() {
@@ -42,7 +42,7 @@ export default {
                 username: "",
                 password: ""
             },
-            ischecked: false,
+            // ischecked: false,
             crumbData: [],
             rules: {
                 username: [{ required: true, message: "请输入用户名" }],
@@ -59,6 +59,8 @@ export default {
                         confirmButtonText: "确定",
                         center: true,
                         callback: action => {
+                            sessionStorage.setItem('userInfo', JSON.stringify(this.model))
+                            sessionStorage.setItem('isLogin', true)
                             this.$store.dispatch("user/queryUserInfo", this.model);
                             this.$router.push("/businessStatistics");
                         }

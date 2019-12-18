@@ -108,10 +108,11 @@ router.beforeEach((to, from, next) => {
     //         next(`/login?redirect=${to.path}`)
     //     }
     // }
-    console.log('store.getters',store.getters['user/isLogined'])
-    if(to.meta.requireAuth&&!store.getters['user/isLogined']){
+    if(to.meta.requireAuth&&!sessionStorage.getItem('isLogin')){
         next('/login')
     }else{
+        store.dispatch('user/queryUserInfo', JSON.parse(sessionStorage.getItem('userInfo')))
+        store.commit('user/setCount', sessionStorage.getItem('count'))
         next()
     }
 })

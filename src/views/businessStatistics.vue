@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-09-02 11:50:32 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-17 20:13:08
+ * @Last Modified time: 2019-12-18 15:21:27
  */
 <!--  -->
 <template>
@@ -41,7 +41,8 @@
             userInfo:{{userInfo}}</div>
         <el-button type='primary' @click="add">add</el-button>
         <div>count: {{count}}</div>
-        <div>name: {{name}}</div>
+        <div>name: {{username}}</div>
+        mapGetters: {{showMsg}}
     </div>
 </template>
 
@@ -50,7 +51,7 @@
 // import MyCheckbox from "./checkbox";
 // import FormItem from "./formItem";
 // import MyForm from "./form";
-import {mapState} from 'vuex'
+import {mapState, mapMutations, mapGetters} from 'vuex'
 export default {
     name: "BusinessStatistics",
     components: {
@@ -79,16 +80,25 @@ export default {
     },
     computed: {
         ...mapState({
-            name: state=>state.name
+            username: state=> state.user.name
+        }),
+        ...mapGetters({
+            showMsg: 'user/showMsg'
         }),
         userInfo(){
             return this.$store.state.user.userInfo
         },
         count(){
             return this.$store.state.user.count
-        }
+        },
+        // name(){
+        //     return this.$store.state.user.name
+        // }
     },
     methods: {
+        // ...mapMutations({
+        //     add: 'user/setCount'
+        // }),
         test() {
             this.$router.push({
                 path: "detail/56456",
