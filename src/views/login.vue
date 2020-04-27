@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 13:59:53 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-18 14:06:00
+ * @Last Modified time: 2019-12-30 09:42:43
  */
 <!--  -->
 <template>
@@ -59,6 +59,7 @@ export default {
                         confirmButtonText: "确定",
                         center: true,
                         callback: action => {
+                            document.cookie="userName=才华有限公司";
                             sessionStorage.setItem('userInfo', JSON.stringify(this.model))
                             sessionStorage.setItem('isLogin', true)
                             this.$store.dispatch("user/queryUserInfo", this.model);
@@ -82,15 +83,11 @@ export default {
 <style lang='scss'>
 .login-wrapper {
     position: fixed;
-    top: 0;
-    left: 0;
+    // top: 0;
+    // left: 0;
     height: 100%;
     width: 100%;
     background: url("../assets/images/login-bg.jpg") center top no-repeat fixed;
-    // background-image: url("../assets/images/login-bg.jpg");
-    // background-position: center top;
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover; /* 兼容Webkit内核浏览器如Chrome和Safari */
     -o-background-size: cover; /* 兼容Opera */

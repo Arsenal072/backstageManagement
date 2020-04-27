@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-09-02 11:50:32 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-18 15:21:27
+ * @Last Modified time: 2019-12-19 15:53:48
  */
 <!--  -->
 <template>
@@ -51,6 +51,7 @@
 // import MyCheckbox from "./checkbox";
 // import FormItem from "./formItem";
 // import MyForm from "./form";
+import getCookie from '../utils/getCookie'
 import {mapState, mapMutations, mapGetters} from 'vuex'
 export default {
     name: "BusinessStatistics",
@@ -112,6 +113,7 @@ export default {
         }
     },
     created(){
+        console.log('userName:', getCookie('userName'))
         this.crumbData = this.$route.matched.map(m => m.name);
     }
 };

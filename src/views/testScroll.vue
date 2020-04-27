@@ -2,11 +2,20 @@
  * @Author: CGQ 
  * @Date: 2019-11-08 13:51:26 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-10 16:43:36
+ * @Last Modified time: 2020-01-15 16:18:42
  */
 <!-- 测试scroll-better -->
 <template>
     <div class="recommend">
+        <div style='background-color: orange;'>hhhh</div>
+        <div class='box'>
+            <div class='left'> </div>
+            <div class='right'>
+                <div class='little'></div>
+                <div class='little'></div>
+                <div class='little'></div>
+            </div>
+        </div>
         <scroll ref="scroll" class="recommend-content" :data="discList">
             <div>
                 <div class="recommend-list">
@@ -32,7 +41,7 @@
 
 <script>
 import Scroll from "../layout/Scroll";
-import Child from '@/components/child'
+import Child from "@/components/child";
 
 export default {
     name: "recommend",
@@ -116,28 +125,55 @@ export default {
                     dissname: "许巍"
                 }
             ],
-            msg: '加急件案件安监局啊'
+            msg: "加急件案件安监局啊"
         };
     },
-    created() {
-    },
+    created() {},
     methods: {
-        k(){
-            this.$refs.child.submit()
+        k() {
+            this.$refs.child.submit();
         },
-        returnMsg(inputValue){
-            console.log('inputValue',inputValue)
+        returnMsg(inputValue) {
+            console.log("inputValue", inputValue);
         }
-    },
-
+    }
 };
 </script>
 <style lang='scss' scoped>
-.item{
+.item {
     width: 40%;
     margin: 0 auto;
     border: 1px solid #3978ff;
     display: flex;
     justify-content: space-around;
+}
+.left {
+    background: #73de80; /* 绿色 */
+    // opacity: 0.5;
+    border: 3px solid #f31264;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+.right {
+    /* 粉色 */
+    background: #ef5be2;
+    // opacity: 0.5;
+    border: 3px solid #f31264;
+    width: 400px;
+    min-height: 100px;
+}
+.box {
+    background: #888;
+    height: 100%;
+    margin-left: 50px;
+    overflow: hidden;
+}
+.little {
+    background: #fff;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    float: left;
 }
 </style>
