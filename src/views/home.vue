@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 14:01:23 
  * @Last Modified by: CGQ
- * @Last Modified time: 2020-04-27 21:03:17
+ * @Last Modified time: 2020-04-29 11:11:49
  */
 <!--  -->
 <template>
@@ -18,7 +18,7 @@
                 </el-aside>
                 <el-main>
                     <div class='breadCrumb'>{{$route.meta.title}}</div>
-                    <div class="select">
+                    <!-- <div class="select">
                         <div class="inner">
                             <div class="inputWrapper">
                                 <input type="text" readonly placeholder="请选择菜品">
@@ -28,11 +28,11 @@
                                 <li v-for="(item, index) in options" :key="index">{{item.value}}</li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                     <router-view />
                 </el-main>
             </el-container>
-            <Footer></Footer>
+            <!-- <Footer></Footer> -->
         </el-container>
     </div>
 </template>
@@ -86,12 +86,12 @@ export default {
     .select {
         .inner {
             width: 250px;
-            .inputWrapper{
+            .inputWrapper {
                 height: 40px;
                 border: 1px solid #999;
                 margin-bottom: 2px;
                 padding: 0;
-                input{
+                input {
                     width: 80%;
                     height: 100%;
                     border: none;
@@ -99,7 +99,6 @@ export default {
                 }
             }
             .options {
-                
                 border: 1px solid #666;
                 li {
                     border-bottom: 1px solid #666;

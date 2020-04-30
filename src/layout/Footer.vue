@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:57:17 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-08-30 16:26:38
+ * @Last Modified time: 2020-04-29 11:11:20
  */
 <!-- footer -->
 <template>
@@ -30,8 +30,9 @@ export default {
 </script>
 <style lang='scss'>
 .footer-wrapper{
+    padding-top: 50px;
     .bottom-box{
-        position: absolute;
+        position: fixed;
         bottom: 0;
         width: 100%;
         height: 80px;
