@@ -2,12 +2,12 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 14:01:23 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-11 17:09:39
+ * @Last Modified time: 2020-04-27 21:03:17
  */
 <!--  -->
 <template>
     <div class="index-wrapper">
-        <el-container>
+        <el-container ref='a'>
             <!-- 头部 -->
             <el-header>
                 <Header></Header>
@@ -35,7 +35,25 @@ export default {
     components: { Aside, Footer, Header },
 
     data() {
-        return {};
+        return {
+            options: [
+                {
+                    value: "西红柿鸡蛋"
+                },
+                {
+                    value: "青椒抱鸡蛋"
+                },
+                {
+                    value: "回锅肉"
+                },
+                {
+                    value: "宫保鸡丁"
+                },
+                {
+                    value: "地三鲜"
+                }
+            ]
+        };
     },
 
     methods: {},
@@ -68,6 +86,30 @@ export default {
         text-align: left;
         padding: 20px;
         border-bottom: 1px solid #eee;
+    }
+    .select {
+        .inner {
+            width: 250px;
+            .inputWrapper{
+                height: 40px;
+                border: 1px solid #999;
+                margin-bottom: 2px;
+                padding: 0;
+                input{
+                    width: 80%;
+                    height: 100%;
+                    border: none;
+                    padding-top: 8px;
+                }
+            }
+            .options {
+                
+                border: 1px solid #666;
+                li {
+                    border-bottom: 1px solid #666;
+                }
+            }
+        }
     }
 }
 </style>

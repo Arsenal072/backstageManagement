@@ -36,27 +36,55 @@ const router = new Router({
                                 title: '业务统计',
                                 requireAuth: false
                             },
-                            component: () => import('../views/businessStatistics.vue')
+                            component: () => import('../views/businessStatistics.vue'),
+                            children: [
+                                {
+                                    path: '/main',
+                                    name: 'main',
+                                    meta: {
+                                        title: 'main',
+                                        requireAuth: true
+                                    },
+                                    component: () => import('../views/main.vue')
+                                },
+                                {
+                                    path: '/about',
+                                    name: 'about',
+                                    meta: {
+                                        title: 'about',
+                                        requireAuth: true
+                                    },
+                                    component: () => import('../views/about.vue')
+                                }
+                            ]
                         },
                         {
                             path: '/testScroll',
                             name: 'testScroll',
                             meta: {
                                 title: 'testScroll',
-                                requireAuth: false
+                                requireAuth: true
                             },
                             component: () => import('../views/testScroll.vue')
+                        },
+                        {
+                            path: '/tree',
+                            name: 'tree',
+                            meta: {
+                                title: 'tree',
+                                requireAuth: false
+                            },
+                            component: () => import('../views/index.vue')
+                        },
+                        {
+                            path: '/detail/:id',
+                            name: 'detail',
+                            meta: {
+                                title: 'detail',
+                                requireAuth: true
+                            },
+                            component: () => import('../views/detail.vue')
                         }
-
-                        // {
-                        //     path: '*',
-                        //     name: '404',
-                        //     meta: {
-                        //         title: '404',
-                        //         requireAuth: false
-                        //     },
-                        //     component: () => import('../views/notFound.vue')
-                        // }
                     ]
                 },                
             ]
@@ -68,7 +96,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     document.title = to.meta.title || ''
     NProgress.start()
-    next()
+    // next()
     // // 已登录
     // if(Object.keys(store.getters.userInfo).length){
     //     next()
@@ -80,12 +108,13 @@ router.beforeEach((to, from, next) => {
     //         next(`/login?redirect=${to.path}`)
     //     }
     // }
-
-    // if(to.meta.requireAuth){
-    //     next('/login')
-    // }else{
-    //     next()
-    // }
+    if(to.meta.requireAuth&&!sessionStorage.getItem('isLogin')){
+        next('/login')
+    }else{
+        store.dispatch('user/queryUserInfo', JSON.parse(sessionStorage.getItem('userInfo')))
+        store.commit('user/setCount', sessionStorage.getItem('count'))
+        next()
+    }
 })
 
 //路由钩子 --- 进入后： 回到顶部

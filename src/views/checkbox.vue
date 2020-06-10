@@ -1,25 +1,25 @@
 /*
  * @Author: CGQ 
- * @Date: 2019-12-11 13:29:20 
+ * @Date: 2019-12-13 16:30:14 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-12-17 17:35:19
+ * @Last Modified time: 2019-12-17 18:21:30
  */
 <!--  -->
 <template>
-    <div class='input-wrapper'>
-        <input :value='value' @input='oninput' v-bind='$attrs' class='input'>
+    <div>
+        <input type='checkbox' :checked='value' @change='oninput' v-bind='$attrs' class='input'>
     </div>
 </template>
 
 <script>
 export default {
     inheritAttrs: false,
-    name: "Input",
+    name: "",
     components: {},
     props: {
         value: {
-            type: String,
-            default: ""
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -28,13 +28,12 @@ export default {
 
     methods: {
         oninput(event) {
-            this.$emit("input", event.target.value);
-            this.$parent.$emit('validate')
+            this.$emit("input", event.returnValue);
         }
     }
 };
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 .input-wrapper {
     display: inline-block;
     .input {

@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-30 11:55:06 
  * @Last Modified by: CGQ
- * @Last Modified time: 2019-09-02 09:35:19
+ * @Last Modified time: 2019-12-17 19:19:04
  */
 <!-- header -->
 <template>
@@ -36,6 +36,7 @@ export default {
     methods: {
         // 退出
         quit(){
+            this.$store.dispatch('user/quit')
             this.$router.push('/login')
         }
     }
