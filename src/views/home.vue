@@ -18,7 +18,7 @@
                 </el-aside>
                 <el-main>
                     <div class='breadCrumb'>{{$route.meta.title}}</div>
-                    <router-view/>
+                    <router-view />
                 </el-main>
             </el-container>
             <Footer></Footer>
@@ -35,19 +35,36 @@ export default {
     components: { Aside, Footer, Header },
 
     data() {
-        return {
-        };
+        return {};
     },
 
     methods: {},
-    created(){
-        console.log('route',this.$route)
+    created() {
+        console.log("route", this.$route);
+
+        const getPromise = function(a,b){
+            return new Promise((resolve,reject)=>{
+                reject(a+b)
+            })
+        }
+        const gen = async function (){
+            // let Promise1 = await getPromise(1,2)
+            return await getPromise(1,2)
+            // let Promise1 = await getPromise(1,2)
+            // return Promise1
+            
+            // let Promise2 = await getPromise(Promise1,2)
+            // return Promise2
+        }
+        gen().then(res=>{
+            console.log(res)
+        })
     }
 };
 </script>
 <style lang='scss'>
 .index-wrapper {
-    .breadCrumb{
+    .breadCrumb {
         text-align: left;
         padding: 20px;
         border-bottom: 1px solid #eee;

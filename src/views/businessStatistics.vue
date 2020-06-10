@@ -23,6 +23,10 @@
         </div>
 
         {{model}}
+
+        <br>
+        <Form></Form>
+
     </div>
 </template>
 
@@ -30,12 +34,14 @@
 import MyInput from "./input";
 import FormItem from "./formItem";
 import MyForm from "./form";
+import Form from './form/index'
 export default {
     name: "BusinessStatistics",
     components: {
         MyInput,
         FormItem,
-        MyForm
+        MyForm,
+        Form
     },
 
     data() {
