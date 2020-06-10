@@ -36,11 +36,10 @@
         },
         methods: {
             validate(){
-                console.log('this.prop',this)
-                const value = this.form.model[prop]
-                const rule = this.form.rules[prop]
+                const value = this.form.model[this.prop]
+                const rule = this.form.rules[this.prop]
                 // npm i async-validator -S
-                const desc = { [this.prop]: rules };
+                const desc = { [this.prop]: rule };  
                 const schema = new Schema(desc);
                 // return的是校验结果的Promise
                 return schema.validate({ [this.prop]: value }, errors => {

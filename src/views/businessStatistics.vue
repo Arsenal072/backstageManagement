@@ -70,18 +70,18 @@ export default {
 
     },
     computed: {
-        ...mapState({
-            username: state=> state.user.name
-        }),
-        ...mapGetters({
-            showMsg: 'user/showMsg'
-        }),
-        userInfo(){
-            return this.$store.state.user.userInfo
-        },
-        count(){
-            return this.$store.state.user.count
-        },
+        // ...mapState({
+        //     username: state=> state.user.name
+        // }),
+        // ...mapGetters({
+        //     showMsg: 'user/showMsg'
+        // }),
+        // userInfo(){
+        //     return this.$store.state.user.userInfo
+        // },
+        // count(){
+        //     return this.$store.state.user.count
+        // },
         // name(){
         //     return this.$store.state.user.name
         // }
@@ -103,7 +103,7 @@ export default {
         }
     },
     created(){
-        console.log('userName:', getCookie('userName'))
+        // console.log('userName:', getCookie('userName'))
         this.crumbData = this.$route.matched.map(m => m.name);
     }
 };

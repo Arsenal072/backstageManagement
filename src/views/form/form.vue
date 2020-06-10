@@ -28,8 +28,13 @@
             return {};
         },
         methods: {
-            validate() {
-                console.log('哈哈哈哈哈')
+            validate(cb) {
+                let tasks = this.$children.filter(item=>item.prop).map(i=>i.validate())
+                Promise.all(tasks).then(()=>{
+                    cb(true)
+                }).catch(()=>{
+                    cb(false)
+                })
             }
         }
     }

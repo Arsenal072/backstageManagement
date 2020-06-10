@@ -45,7 +45,13 @@
         },
         methods: {
             submit(){
-                this.refs['form'].validate()
+                this.refs['form'].validate((valid)=>{
+                    if(valid){
+                        console.log('請求注册')
+                    }else{
+                        console.log('请重新输入')
+                    }
+                })
             }
         }
     }
