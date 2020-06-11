@@ -30,6 +30,7 @@
         {{ischecked}} -->
         <!-- {{model}} -->
 
+<<<<<<< HEAD
         <div>
             <router-link to='/main'>main</router-link>
             <router-link to='/about'>about</router-link>
@@ -174,23 +175,37 @@
             </div>
 
         </div>
+=======
+        {{model}}
+
+        <br>
+        <Form></Form>
+
+>>>>>>> c424cdc2f96c9ffee5474859ececb5bf0d78743c
     </div>
 </template>
 
 <script>
+<<<<<<< HEAD
 // import MyInput from "./input";
 // import MyCheckbox from "./checkbox";
 // import FormItem from "./formItem";
 // import MyForm from "./form";
 import getCookie from "../utils/getCookie";
 import { mapState, mapMutations, mapGetters } from "vuex";
+=======
+import MyInput from "./input";
+import FormItem from "./formItem";
+import MyForm from "./form";
+import Form from './form/index'
+>>>>>>> c424cdc2f96c9ffee5474859ececb5bf0d78743c
 export default {
     name: "BusinessStatistics",
     components: {
-        // MyInput,
-        // FormItem,
-        // MyForm,
-        // MyCheckbox
+        MyInput,
+        FormItem,
+        MyForm,
+        Form
     },
 
     data() {
@@ -210,18 +225,18 @@ export default {
         }
     },
     computed: {
-        ...mapState({
-            username: state => state.user.name
-        }),
-        ...mapGetters({
-            showMsg: "user/showMsg"
-        }),
-        userInfo() {
-            return this.$store.state.user.userInfo;
-        },
-        count() {
-            return this.$store.state.user.count;
-        }
+        // ...mapState({
+        //     username: state=> state.user.name
+        // }),
+        // ...mapGetters({
+        //     showMsg: 'user/showMsg'
+        // }),
+        // userInfo(){
+        //     return this.$store.state.user.userInfo
+        // },
+        // count(){
+        //     return this.$store.state.user.count
+        // },
         // name(){
         //     return this.$store.state.user.name
         // }
@@ -242,8 +257,8 @@ export default {
             this.$store.commit("user/setCount");
         }
     },
-    created() {
-        console.log("userName:", getCookie("userName"));
+    created(){
+        // console.log('userName:', getCookie('userName'))
         this.crumbData = this.$route.matched.map(m => m.name);
     },
     mounted(){

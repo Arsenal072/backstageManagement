@@ -2,7 +2,7 @@
  * @Author: CGQ 
  * @Date: 2019-08-29 14:01:23 
  * @Last Modified by: CGQ
- * @Last Modified time: 2020-04-29 11:11:49
+ * @Last Modified time: 2020-06-11 10:26:45
  */
 <!--  -->
 <template>
@@ -69,10 +69,25 @@ export default {
 
     methods: {},
     created() {
-        // console.log('route',this.$route)
-    },
-    mounted() {
-        console.log(this.$refs["a"].childNodes);
+        console.log("route", this.$route);
+
+        const getPromise = function(a,b){
+            return new Promise((resolve,reject)=>{
+                reject(a+b)
+            })
+        }
+        const gen = async function (){
+            // let Promise1 = await getPromise(1,2)
+            return await getPromise(1,2)
+            // let Promise1 = await getPromise(1,2)
+            // return Promise1
+            
+            // let Promise2 = await getPromise(Promise1,2)
+            // return Promise2
+        }
+        gen().then(res=>{
+            console.log(res)
+        })
     }
 };
 </script>
